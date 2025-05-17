@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import TaskService from "../services/TaskService";
+import { error } from "console";
 
 const taskService = new TaskService();
 
@@ -19,6 +20,20 @@ class TaskController{
             res.status(200);
         }else{
             res.json({error: 'Erro no parametro do Status'});
+            res.status(401);
+        }
+    };
+
+    getById(req: Request, res: Response) {
+        const {id_task} = req.params;
+
+        if(id_task) {
+
+            const result = taskService.getById(id_task);
+            res.json(result);
+            res.status(200);
+        }else{
+            res.json({error: "Id Invalido"});
             res.status(401);
         }
     };

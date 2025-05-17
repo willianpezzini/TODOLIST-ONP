@@ -12,6 +12,10 @@ class TaskRepository {
         return this.tasks;
     }
 
+    // getById(id_task: string): Task[] {
+    //    return this.tasks;
+    // }
+
     add(data: Task): Task {
         this.tasks.push(data);
         return data;
