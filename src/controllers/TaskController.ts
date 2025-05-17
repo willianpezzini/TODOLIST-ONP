@@ -9,6 +9,20 @@ class TaskController{
 
     }
 
+    get(req: Request, res: Response) {
+        const {status} = req.query;
+
+        if(status && (status === 'fazer' || status ==='fazendo' || status ==='finalizado')) {
+
+            const result = taskService.get(status);
+            res.json(result);
+            res.status(200);
+        }else{
+            res.json({error: 'Erro no parametro do Status'});
+            res.status(401);
+        }
+    };
+
     add(req: Request, res: Response) {
         const {id, descricao, data, status} = req.body;
 
