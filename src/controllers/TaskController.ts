@@ -57,6 +57,46 @@ class TaskController{
             res.status(401);
         }
     }
+
+    update(req: Request, res: Response) {
+        const {id, descricao, data, status} = req.body;
+        const {id_task} = req.params;
+
+        if(id && descricao && data && status && id_task) {
+
+            if(status === 'fazer' || status ==='fazendo' || status ==='finalizado') {
+
+                const result = taskService.update(req.body, id_task);
+
+                if (result && Object.keys(result).length > 0) {
+                    res.json(result);
+                }else {
+                    res.json({error: "Task Não Encontrada"});
+                    res.status(404);
+                }
+                
+
+            }else {
+                res.json({error: "Parametro de Status Inválido"});
+                res.status(401);
+            }
+
+        }else {
+            //Se algum dados estiver errado, cau aqui neste else
+            res.json({error: "Parâmetros Inválidos"});
+            res.status(401);
+        }
+    }
+
+    delete(req: Request, res: Response) {
+        const {id_task} = req.params;
+
+        if(id_task) {
+
+        }else {
+            res.json({error:"Task não encontrada" })
+        }
+    }
 }
 
 export default TaskController;

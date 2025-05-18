@@ -20,6 +20,10 @@ class TaskRepository {
         this.tasks.push(data);
         return data;
     }
+
+    update(data: Task, position: number ) {
+        this.tasks[position] = data;
+    }
 }
 
 export default TaskRepository;
