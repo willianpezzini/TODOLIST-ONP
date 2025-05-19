@@ -92,9 +92,11 @@ class TaskController{
         const {id_task} = req.params;
 
         if(id_task) {
-
+            const result = taskService.delete(id_task);
+            res.json(result);
         }else {
-            res.json({error:"Task não encontrada" })
+            res.json({error:"É necessário passar o Id_task nos parâmetros" });
+            res.status(401)
         }
     }
 }

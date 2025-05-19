@@ -24,6 +24,11 @@ class TaskRepository {
     update(data: Task, position: number ) {
         this.tasks[position] = data;
     }
+
+    delete(position: number) {
+        delete this.tasks[position];
+        return position;
+    }
 }
 
 export default TaskRepository;

@@ -9,6 +9,6 @@ router.get('/task', taskController.get);
 router.get('/task/:id_task', taskController.getById);
 router.post('/task', taskController.add);
 router.put('/task/:id_task', taskController.update);
-router.delete('/task/id_task', taskController.delete);
+router.delete('/task/:id_task', taskController.delete);
 
 export default router;
